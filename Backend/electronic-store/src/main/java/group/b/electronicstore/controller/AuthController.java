@@ -90,7 +90,9 @@ public class AuthController {
         account.setStatus(signUpRequest.getStatus());
         account.setRole(signUpRequest.getRole());
         accountRepository.save(account);
-        Customer cus = signUpRequest.getCustomer();
+        Customer cus = new Customer();
+        cus.setType(0);
+        cus.setStatus("Active");
         cus.setAccount(account);
         customerRepository.save(cus);
         return ResponseEntity.ok(new MessageResponse("Account registered successfully!"));

@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Value;
+
 @Entity
 @Table(name = "account")
 public class Account {
@@ -18,9 +20,9 @@ public class Account {
 	private String username;
 	@Column(name = "password")
 	private String password;
-	@Column(name = "role")
+	@Column(name = "role", columnDefinition = "varchar(255) default 'user'")
 	private String role;
-	@Column(name = "status")
+	@Column(name = "status", columnDefinition = "varchar(255) default 'Active'")
 	private String status;
 	public Account() {}
 

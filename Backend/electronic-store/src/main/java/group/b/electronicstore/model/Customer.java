@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -34,9 +36,9 @@ public class Customer {
 	private String phone;
 	@Column(name = "email")
 	private String email;
-	@Column(name = "type")
+	@Column(name = "type", columnDefinition = "integer default 0")
 	private Integer type;
-	@Column(name = "status")
+	@Column(name = "status", columnDefinition = "varchar(255) default 'Active'")
 	private String status;
 	@OneToMany(mappedBy="customer")
 	private List<Order> orderList;
